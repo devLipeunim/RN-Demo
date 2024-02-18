@@ -1,5 +1,4 @@
-import * as Device from "expo-device";
-import { Stack } from "expo-router";
+import { Link, Stack } from "expo-router";
 import React, { useState } from "react";
 import {
   SafeAreaView,
@@ -88,7 +87,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontFamily: "DMRegular",
     color: "#f09a36",
-    textAlign: "center"
+    textAlign: "center",
   },
   headerLeft: {
     color: "#fff",
@@ -97,9 +96,8 @@ const styles = StyleSheet.create({
   },
 });
 
-const Home = () => {
+const Page = () => {
   const [input, setInput] = useState("");
-  const [loading, setLoading] = useState(false);
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar
@@ -112,9 +110,7 @@ const Home = () => {
         options={{
           headerStyle: { backgroundColor: "#f09a36" },
           headerShadowVisible: false,
-          headerLeft: () => (
-            <Text style={styles.headerLeft}>Lipeunim&gt;&gt;&gt;</Text>
-          ),
+          headerLeft: () => <Text style={styles.headerLeft}>Lipeunim</Text>,
           headerRight: () => <ScreenHeaderPic dimension="100%" />,
           headerTitle: "",
         }}
@@ -139,27 +135,22 @@ const Home = () => {
           }}
         />
         <TouchableOpacity
-          onPress={() => {
-            if (input) {
-              setLoading(true);
-            }
-          }}
+          onPress={() => {}}
           style={input == "" ? styles.button : styles.buttonActive}
         >
-          <Text style={styles.buttonText}>Continue</Text>
+          <Link
+            style={styles.buttonText}
+            href={{
+              pathname: "/home",
+              params: { userName: input },
+            }}
+          >
+            Continue
+          </Link>
         </TouchableOpacity>
-
-        {loading && (
-          <View style={styles.placeCenter}>
-            <Text style={styles.welcome}>Welcome {input} 🥰</Text>
-            <Text style={styles.deviceProp}>
-              {Device.manufacturer}: {Device.modelName}
-            </Text>
-          </View>
-        )}
       </View>
     </SafeAreaView>
   );
 };
 
-export default Home;
+export default Page;

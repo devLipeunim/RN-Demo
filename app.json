@@ -17,13 +17,15 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.devlipeunim.rndemo"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.devlipeunim.rndemo"
     },
     "web": {
       "bundler": "metro",
@@ -43,6 +45,12 @@
       "eas": {
         "projectId": "9df1dcd5-869b-4e88-82df-07663c691c76"
       }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/9df1dcd5-869b-4e88-82df-07663c691c76"
     }
   }
 }
